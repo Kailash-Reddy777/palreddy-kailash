@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIY Engineering | Kailash</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/4adad1b8d3.js" crossorigin="anonymous"></script>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0d1117;
+color:#c9d1d9;
+overflow-x:hidden;
+}
+
+/* ========= Animated Gradient Background ========= */
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+background:radial-gradient(circle at 20% 30%,#58a6ff33,transparent 40%),
+           radial-gradient(circle at 80% 70%,#ff00cc33,transparent 40%);
+animation:bgMove 10s infinite alternate linear;
+z-index:-2;
+}
+
+@keyframes bgMove{
+0%{transform:translate(0,0);}
+100%{transform:translate(-10%,-10%);}
+}
+
+/* ========= Navbar ========= */
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:rgba(22,27,34,0.8);
+backdrop-filter:blur(12px);
+border-bottom:1px solid #30363d;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+nav h1{
+color:#58a6ff;
+}
+
+nav ul{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+nav ul li{
+cursor:pointer;
+transition:.3s;
+}
+
+nav ul li:hover{
+color:#58a6ff;
+text-shadow:0 0 10px #58a6ff;
+}
+
+/* ========= Hero ========= */
+.hero{
+text-align:center;
+padding:120px 10%;
+}
+
+.hero h2{
+font-size:50px;
+color:#58a6ff;
+animation:fadeUp 2s ease forwards;
+}
+
+.hero p{
+margin-top:20px;
+opacity:.8;
+}
+
+@keyframes fadeUp{
+from{opacity:0; transform:translateY(40px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+.btn{
+margin-top:30px;
+padding:14px 35px;
+border:2px solid #58a6ff;
+background:transparent;
+color:#58a6ff;
+border-radius:8px;
+cursor:pointer;
+transition:.4s;
+}
+
+.btn:hover{
+background:#58a6ff;
+color:#0d1117;
+box-shadow:0 0 25px #58a6ff;
+}
+
+/* ========= Projects ========= */
+.projects{
+padding:100px 8%;
+}
+
+.project-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+padding:30px;
+border-radius:15px;
+text-align:center;
+transition:.5s;
+position:relative;
+overflow:hidden;
+}
+
+.card:hover{
+transform:translateY(-15px) scale(1.05);
+box-shadow:0 20px 40px rgba(88,166,255,.4);
+}
+
+.card i{
+font-size:45px;
+color:#58a6ff;
+margin-bottom:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.card i:hover{
+color:#ff00cc;
+text-shadow:0 0 20px #ff00cc;
+}
+
+/* ========= Subscription ========= */
+.subscription{
+padding:100px 8%;
+text-align:center;
+}
+
+.plan{
+display:inline-block;
+background:#161b22;
+padding:40px;
+margin:20px;
+border-radius:15px;
+border:1px solid #30363d;
+transition:.4s;
+}
+
+.plan:hover{
+transform:scale(1.1);
+box-shadow:0 0 25px #58a6ff;
+}
+
+/* ========= Gallery ========= */
+.gallery{
+padding:100px 8%;
+text-align:center;
+}
+
+.gallery img{
+width:300px;
+margin:15px;
+border-radius:15px;
+transition:.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.1);
+box-shadow:0 0 25px #ff00cc;
+}
+
+/* ========= Modal ========= */
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.7);
+justify-content:center;
+align-items:center;
+}
+
+.modal-content{
+background:#161b22;
+padding:40px;
+border-radius:15px;
+width:300px;
+text-align:center;
+}
+
+.modal-content input{
+width:100%;
+padding:10px;
+margin:10px 0;
+background:#0d1117;
+border:1px solid #30363d;
+color:white;
+}
+
+footer{
+text-align:center;
+padding:40px;
+border-top:1px solid #30363d;
+margin-top:80px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<h1>Kailash DIY Engineering</h1>
+<ul>
+<li onclick="openModal()">Login</li>
+<li onclick="openModal()">Sign Up</li>
+<li>Contact</li>
+</ul>
+</nav>
+
+<section class="hero">
+<h2>Advanced DIY Engineering Projects</h2>
+<p>Innovative hands-on creations by Kailash</p>
+<button class="btn">Explore Now</button>
+</section>
+
+<section class="projects">
+<h2 style="text-align:center;margin-bottom:50px;">Project Showcase</h2>
+
+<div class="project-grid">
+
+<div class="card">
+<i class="fas fa-robot" onclick="playSound()"></i>
+<h3>Gesture Robot</h3>
+<p>Microcontroller based robot controlled via accelerometer sensors.</p>
+</div>
+
+<div class="card">
+<i class="fas fa-solar-panel" onclick="playSound()"></i>
+<h3>Solar Tracker</h3>
+<p>Automatic sunlight tracking system increasing 30% efficiency.</p>
+</div>
+
+<div class="card">
+<i class="fas fa-home" onclick="playSound()"></i>
+<h3>Smart Home IoT</h3>
+<p>Control appliances remotely using WiFi modules.</p>
+</div>
+
+<div class="card">
+<i class="fas fa-car" onclick="playSound()"></i>
+<h3>Bluetooth Car</h3>
+<p>Arduino powered mobile controlled robotic car.</p>
+</div>
+
+</div>
+</section>
+
+<section class="subscription">
+<h2>Premium Subscription</h2>
+
+<div class="plan">
+<h3>Basic</h3>
+<p>₹199/month</p>
+<p>Access to 10 projects</p>
+<button class="btn">Subscribe</button>
+</div>
+
+<div class="plan">
+<h3>Pro</h3>
+<p>₹499/month</p>
+<p>Unlimited projects + source code</p>
+<button class="btn">Subscribe</button>
+</div>
+
+</section>
+
+<section class="gallery">
+<h2>Project Gallery</h2>
+<img src="https://images.unsplash.com/photo-1581091870627-3b5de72f1c7c" />
+<img src="https://images.unsplash.com/photo-1581091012184-5c0d6d7d7d7f" />
+<img src="https://images.unsplash.com/photo-1581092588429-9c5c6d9d7d7f" />
+</section>
+
+<footer>
+<p>Developed by Kailash</p>
+<p>Email: palreddykailash@gmail.com | Contact: 9347926455</p>
+</footer>
+
+<!-- Login Modal -->
+<div class="modal" id="modal">
+<div class="modal-content">
+<h3>Login / Sign Up</h3>
+<input type="text" placeholder="Username">
+<input type="password" placeholder="Password">
+<button class="btn">Submit</button>
+</div>
+</div>
+
+<audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
+
+<script>
+function openModal(){
+document.getElementById("modal").style.display="flex";
+}
+
+window.onclick=function(e){
+if(e.target==document.getElementById("modal")){
+document.getElementById("modal").style.display="none";
+}
+}
+
+function playSound(){
+document.getElementById("clickSound").play();
+}
+</script>
+
+</body>
+</html>
